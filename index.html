@@ -1280,7 +1280,7 @@
       document.getElementById("member-since").textContent = joinDate.toLocaleDateString();
 
       // Referral
-      const refLink = `https://t.me/TaskTycoon_bot?start=ref_${userData.userId}`;
+      const refLink = `https://t.me/Spin_Dhora24_Bot?start=ref_${userData.userId}`;
       document.getElementById("referral-link").textContent = refLink;
       document.getElementById("total-referrals").textContent = userData.referrals || 0;
       document.getElementById("referral-earnings").textContent = (userData.referralEarnings || 0).toFixed(2);
@@ -1573,7 +1573,7 @@
     function copyReferralLink() {
       if (!userData) return;
       
-      const refLink = `https://t.me/TaskTycoon_bot?start=ref_${userData.userId}`;
+      const refLink = `https://t.me/Spin_Dhora24_Bot?start=ref_${userData.userId}`;
       navigator.clipboard.writeText(refLink)
         .then(() => showNotification("✅ Referral link copied! Share it to earn $1 per referral.", "success"))
         .catch(() => showNotification("Failed to copy link", "error"));
@@ -1583,7 +1583,7 @@
     function shareReferralLink() {
       if (!userData) return;
       
-      const refLink = `https://t.me/TaskTycoon_bot?start=ref_${userData.userId}`;
+      const refLink = `https://t.me/Spin_Dhora24_Bot?start=ref_${userData.userId}`;
       
       if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.openTelegramLink(refLink);
