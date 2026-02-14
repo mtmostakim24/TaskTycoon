@@ -785,7 +785,7 @@
       </div>
       <div class="balance-display">
         <i class="fas fa-wallet"></i>
-        $<span id="header-balance">0.00</span>
+        ৳<span id="header-balance">0.00</span>
       </div>
     </header>
 
@@ -878,7 +878,7 @@
         </div>
         <div class="info-row">
           <span class="info-label">Minimum Withdrawal</span>
-          <span class="info-value">৳1800.00</span>
+          <span class="info-value">৳1500.00</span>
         </div>
         <div class="info-row">
           <span class="info-label">Referrals Required</span>
@@ -1003,7 +1003,7 @@
             <div class="referral-stat-label">Total Referrals</div>
           </div>
           <div class="referral-stat-box">
-            <div class="referral-stat-value">$<span id="referral-earnings">0.00</span></div>
+            <div class="referral-stat-value">৳<span id="referral-earnings">0.00</span></div>
             <div class="referral-stat-label">Referral Earnings</div>
           </div>
         </div>
@@ -1215,7 +1215,7 @@
             
             if (data.referralHistory && Array.isArray(data.referralHistory)) {
               const referralIndex = data.referralHistory.findIndex(
-                ref => ref.id === `User#৳{userId}`
+                ref => ref.id === `User#${userId}`
               );
               
               if (referralIndex !== -1) {
@@ -1444,12 +1444,12 @@
         return;
       }
       
-      userData.lifetimeEarning += 0.10;
-      data.todaysEarning += 0.10;
+      userData.lifetimeEarning += 5.10;
+      data.todaysEarning += 5.10;
       localStorage.setItem(`lastBonusDate_${userData.userId}`, today);
       updateStorage();
       updateDisplay();
-      showNotification("🎁 Daily bonus claimed! $0.10 added to your balance.", "success");
+      showNotification("🎁 Daily bonus claimed! ৳5.10 added to your balance.", "success");
     }
 
     // Submit withdrawal
@@ -1463,8 +1463,8 @@
         showNotification("Please enter a valid amount", "error");
         return;
       }
-      if (amount < 1200) {
-        showNotification("Minimum withdrawal amount is ৳1200", "error");
+      if (amount < 1500) {
+        showNotification("Minimum withdrawal amount is ৳1500", "error");
         return;
       }
       if (amount > availableBalance) {
