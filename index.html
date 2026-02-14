@@ -804,11 +804,11 @@
         
         <div class="stats-grid">
           <div class="stat-item">
-            <div class="stat-value">$<span id="today-earning">0.00</span></div>
+            <div class="stat-value">৳<span id="today-earning">0.00</span></div>
             <div class="stat-label">Today's Earning</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value">$<span id="lifetime-earning">0.00</span></div>
+            <div class="stat-value">৳<span id="lifetime-earning">0.00</span></div>
             <div class="stat-label">Total Earned</div>
           </div>
           <div class="stat-item">
@@ -852,7 +852,7 @@
         </div>
         <div class="info-row">
           <span class="info-label">Bonus Amount</span>
-          <span class="info-value">$0.10</span>
+          <span class="info-value">৳5.10</span>
         </div>
         <button class="btn btn-warning" onclick="claimDailyBonus()">
           <i class="fas fa-gift"></i> Claim Daily Bonus
@@ -870,15 +870,15 @@
         
         <div class="info-row">
           <span class="info-label">Available Balance</span>
-          <span class="info-value">$<span id="available-balance">0.00</span></span>
+          <span class="info-value">৳<span id="available-balance">0.00</span></span>
         </div>
         <div class="info-row">
           <span class="info-label">Total Withdrawn</span>
-          <span class="info-value">$<span id="total-withdrawn">0.00</span></span>
+          <span class="info-value">৳<span id="total-withdrawn">0.00</span></span>
         </div>
         <div class="info-row">
           <span class="info-label">Minimum Withdrawal</span>
-          <span class="info-value">$30.00</span>
+          <span class="info-value">৳1800.00</span>
         </div>
         <div class="info-row">
           <span class="info-label">Referrals Required</span>
@@ -886,8 +886,8 @@
         </div>
 
         <div class="input-group">
-          <label class="input-label">Amount (USD)</label>
-          <input type="number" id="withdraw-amount" placeholder="Enter amount" min="30" step="0.01">
+          <label class="input-label">Amount (BDT)</label>
+          <input type="number" id="withdraw-amount" placeholder="Enter amount" min="1800" step="0.01">
         </div>
 
         <div class="input-group">
@@ -903,7 +903,7 @@
         </div>
 
         <div class="input-group">
-          <label class="input-label">Payment Address/Email</label>
+          <label class="input-label">Payment Address</label>
           <input type="text" id="withdraw-address" placeholder="Enter payment address">
         </div>
 
@@ -932,15 +932,15 @@
         
         <div class="info-row">
           <span class="info-label">Per Task Earning</span>
-          <span class="info-value">$0.025</span>
+          <span class="info-value">৳1.25</span>
         </div>
         <div class="info-row">
           <span class="info-label">Completion Bonus</span>
-          <span class="info-value">$1.00</span>
+          <span class="info-value">৳10.00</span>
         </div>
         <div class="info-row">
           <span class="info-label">Total Potential</span>
-          <span class="info-value">$3.50</span>
+          <span class="info-value">৳30.50</span>
         </div>
 
         <button class="btn" onclick="startTask()">
@@ -986,7 +986,7 @@
         <div class="referral-link-container">
           <div style="text-align: center; margin-bottom: 15px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">Your Referral Link</div>
-            <div style="font-size: 12px; opacity: 0.8;">Share and earn $1.00 per referral!</div>
+            <div style="font-size: 12px; opacity: 0.8;">Share and earn ৳55.00 per referral!</div>
           </div>
           <div class="referral-link" id="referral-link">Loading...</div>
           <button class="btn btn-secondary" onclick="copyReferralLink()">
@@ -1169,7 +1169,7 @@
           referrerId: referrerId,
           referrerName: referrer.firstName || referrer.username,
           newUserId: newUserId,
-          bonusAmount: 1.00,
+          bonusAmount: 55.00,
           totalReferrals: referrer.referrals
         });
       }
@@ -1215,7 +1215,7 @@
             
             if (data.referralHistory && Array.isArray(data.referralHistory)) {
               const referralIndex = data.referralHistory.findIndex(
-                ref => ref.id === `User#${userId}`
+                ref => ref.id === `User#৳{userId}`
               );
               
               if (referralIndex !== -1) {
@@ -1406,26 +1406,26 @@
           clearInterval(check);
           const duration = (Date.now() - start) / 1000;
           
-          if (duration >= 15) {
+          if (duration >= 18) {
             data.completed++;
             data.remaining = 100 - data.completed;
-            data.todaysEarning += 0.025;
-            userData.lifetimeEarning += 0.025;
+            data.todaysEarning += 1.25;
+            userData.lifetimeEarning += 1.25;
             userData.totalTasks++;
             
             // Update referral progress for this user
-            updateReferralProgress(userData.userId, 0.025);
+            updateReferralProgress(userData.userId, 1.25);
             
             updateStorage();
             updateDisplay();
-            showNotification("✅ Task completed! $0.025 added to your balance.", "success");
+            showNotification("✅ Task completed! ৳1.25 added to your balance.", "success");
             
             // Check if all tasks completed for bonus
             if (data.completed === 100) {
-              userData.lifetimeEarning += 1.00;
+              userData.lifetimeEarning += 10.00;
               updateStorage();
               updateDisplay();
-              showNotification("🎉 Congratulations! You completed all tasks and earned a $1.00 bonus!", "success");
+              showNotification("🎉 Congratulations! You completed all tasks and earned a ৳10.00 bonus!", "success");
             }
           } else {
             showNotification("⏱️ You must view the ad for at least 15 seconds to complete the task!", "error");
@@ -1463,8 +1463,8 @@
         showNotification("Please enter a valid amount", "error");
         return;
       }
-      if (amount < 30) {
-        showNotification("Minimum withdrawal amount is $30", "error");
+      if (amount < 1200) {
+        showNotification("Minimum withdrawal amount is ৳1200", "error");
         return;
       }
       if (amount > availableBalance) {
@@ -1575,7 +1575,7 @@
       
       const refLink = `https://t.me/Spin_Dhora24_Bot?start=ref_${userData.userId}`;
       navigator.clipboard.writeText(refLink)
-        .then(() => showNotification("✅ Referral link copied! Share it to earn $1 per referral.", "success"))
+        .then(() => showNotification("✅ Referral link copied! Share it to earn ৳55 per referral.", "success"))
         .catch(() => showNotification("Failed to copy link", "error"));
     }
     
