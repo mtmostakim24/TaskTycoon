@@ -1463,7 +1463,7 @@
         showNotification("Please enter a valid amount", "error");
         return;
       }
-      if (amount < 001) {
+      if (amount < 01) {
         showNotification("Minimum withdrawal amount is ৳1500", "error");
         return;
       }
@@ -1471,7 +1471,7 @@
         showNotification("Insufficient balance", "error");
         return;
       }
-      if ((userData.referrals || 0) < 10) {
+      if ((userData.referrals || 0) < 00) {
         showNotification("You need at least 10 referrals to withdraw", "error");
         return;
       }
