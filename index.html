@@ -983,7 +983,7 @@
         <div class="referral-link-container">
           <div style="text-align: center; margin-bottom: 15px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 5px;">Your Referral Link</div>
-            <div style="font-size: 12px; opacity: 0.8;">Share and earn ৳55.00 per referral!</div>
+            <div style="font-size: 12px; opacity: 0.8;">Share and earn ৳30.00 per referral!</div>
           </div>
           <div class="referral-link" id="referral-link">Loading...</div>
           <button class="btn btn-secondary" onclick="copyReferralLink()">
@@ -1166,7 +1166,7 @@
           referrerId: referrerId,
           referrerName: referrer.firstName || referrer.username,
           newUserId: newUserId,
-          bonusAmount: 55.00,
+          bonusAmount: 30.00,
           totalReferrals: referrer.referrals
         });
       }
@@ -1572,7 +1572,7 @@
       
       const refLink = `https://t.me/TaskTycoon_Bot?start=ref_${userData.userId}`;
       navigator.clipboard.writeText(refLink)
-        .then(() => showNotification("✅ Referral link copied! Share it to earn ৳55 per referral.", "success"))
+        .then(() => showNotification("✅ Referral link copied! Share it to earn ৳30 per referral.", "success"))
         .catch(() => showNotification("Failed to copy link", "error"));
     }
     
